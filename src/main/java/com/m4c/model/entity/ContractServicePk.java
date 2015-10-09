@@ -11,12 +11,18 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class ContractServicePk implements Serializable{
 	private static final long serialVersionUID = 1L;
-
 	private Long idService;
 	private Long idBooking;
-	
-	
-	public Long getIdService() {
+
+    public ContractServicePk(Long idService, Long idBooking) {
+        this.idService = idService;
+        this.idBooking = idBooking;
+    }
+
+    public ContractServicePk() {
+    }
+
+    public Long getIdService() {
 		return idService;
 	}
 	public void setIdService(Long idService) {

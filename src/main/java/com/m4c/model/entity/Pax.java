@@ -1,6 +1,7 @@
 package com.m4c.model.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
@@ -32,6 +33,7 @@ public class Pax implements Serializable {
 	private PaxPk paxPk;
 	private String relation;
 	private String occupation;
+	private Date birthDate;
 
 	/*@Column(name="RESERVACION_PAX_ID", unique=false, nullable=false, insertable=false, updatable=false)
 	public Long getId() {
@@ -110,7 +112,17 @@ public class Pax implements Serializable {
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
 	}
-	@Override
+
+    @Column(name = "FECHA_NACIMIENTOPAX")
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    @Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

@@ -63,6 +63,7 @@ public class Reservation implements IDEntity {
     private Integer shipping2;
     private Date shippingDate;
     private Date shippingDate2;
+    private String polizaAssistCard;
     //private Long idreservacionpv;
     private List<Pax> paxes = new ArrayList<Pax>();
     private List<InvoiceDetail> payments = new ArrayList<InvoiceDetail>();
@@ -645,10 +646,17 @@ public class Reservation implements IDEntity {
     public void setPickups(List<Pickup> pickups) {
         this.pickups = pickups;
     }
-    
-   
 
-	@Override
+    @Column(name="POLIZASEGURO")
+    public String getPolizaAssistCard() {
+        return polizaAssistCard;
+    }
+
+    public void setPolizaAssistCard(String polizaAssistCard) {
+        this.polizaAssistCard = polizaAssistCard;
+    }
+
+    @Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
