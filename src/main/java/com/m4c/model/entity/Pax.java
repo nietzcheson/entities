@@ -34,6 +34,7 @@ public class Pax implements Serializable {
 	private String relation;
 	private String occupation;
 	private Date birthDate;
+	private String polizas;
 
 	/*@Column(name="RESERVACION_PAX_ID", unique=false, nullable=false, insertable=false, updatable=false)
 	public Long getId() {
@@ -121,6 +122,18 @@ public class Pax implements Serializable {
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
+    @Column(name = "POLIZAS")
+    public String getPolizas() {
+        return polizas;
+    }
+
+    public void setPolizas(String polizas) {
+        this.polizas = polizas;
+    }
+
+
+    500
+
 
     @Override
 	public int hashCode() {
