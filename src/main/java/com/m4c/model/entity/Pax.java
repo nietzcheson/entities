@@ -132,8 +132,6 @@ public class Pax implements Serializable {
     }
 
 
-    500
-
 
     @Override
 	public int hashCode() {
