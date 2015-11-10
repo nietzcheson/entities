@@ -18,6 +18,7 @@ public class Sale implements IDEntity{
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
+
 	private Campaign campaign;
 	private Customer customer;
 	private Date saleDate;
@@ -231,7 +232,7 @@ public class Sale implements IDEntity{
         this.regular = regular;
     }
     @Column(name="IDSUPERVISOR")
-    public String getSupervisor() {
+	public String getSupervisor() {
         return supervisor;
     }
 

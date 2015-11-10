@@ -81,7 +81,7 @@ public class CertCustomer implements IDEntity {
     private Date acceptedDate;
     @JsonIgnore
     private Long callCenter;
-
+    @JsonIgnoreProperties({"masterBroker"})
     private CertLogin user;
 
     

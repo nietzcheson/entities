@@ -25,6 +25,9 @@ public class Country implements Serializable{
 	private String code;
 	private String name;
 	private String name_esp;
+	private Integer phoneCode;
+	private String phoneMask;
+	private String mobileMask;
 	
 	@Id
 	@Column(name="CODE")
@@ -51,5 +54,30 @@ public class Country implements Serializable{
 		this.name_esp = name_esp;
 	}
 
+	@Column(name="PHONE_CODE")
+	public Integer getPhoneCode() {
+		return phoneCode;
+	}
 
+	public void setPhoneCode(Integer phoneCode) {
+		this.phoneCode = phoneCode;
+	}
+
+	@Column(name="PHONE_MASK")
+	public String getPhoneMask() {
+		return phoneMask;
+	}
+
+	public void setPhoneMask(String phoneMask) {
+		this.phoneMask = phoneMask;
+	}
+
+	@Column(name="MOBILE_MASK")
+	public String getMobileMask() {
+		return mobileMask;
+	}
+
+	public void setMobileMask(String mobileMask) {
+		this.mobileMask = mobileMask;
+	}
 }

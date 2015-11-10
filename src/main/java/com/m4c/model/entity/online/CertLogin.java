@@ -36,7 +36,7 @@ public class CertLogin implements Serializable {
 
     @JsonIgnore
     private CertCustomer certCustomer;
-	@JsonIgnore
+	@JsonInclude(JsonInclude.Include.NON_NULL)
     private CertCustomer masterBroker;
     @JsonIgnore
     private Integer level;
@@ -54,6 +54,8 @@ public class CertLogin implements Serializable {
     private String phone;
     private String name;
     private Boolean active;
+	@JsonProperty("isMB")
+	private Boolean isMasterBroker;
     /*
     @EmbeddedId
     @AttributeOverrides( {
@@ -277,7 +279,19 @@ public class CertLogin implements Serializable {
         return active;
     }
 
-    public void setActive(Boolean active) {
+
+
+	@Transient
+	public Boolean getIsMasterBroker() {
+
+		return isMasterBroker;
+	}
+
+	public void setIsMasterBroker(Boolean isMasterBroker) {
+		this.isMasterBroker = isMasterBroker;
+	}
+
+	public void setActive(Boolean active) {
         this.active = active;
     }
     public CertLogin(String user, String password, String email, String phone,String name,Boolean active) {
@@ -301,6 +315,7 @@ public class CertLogin implements Serializable {
         this.active = active;
         this.name = name;
     }
+
 
     @Override
 	public String toString() {
