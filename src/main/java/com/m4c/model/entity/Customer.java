@@ -457,7 +457,7 @@ public class Customer implements IDEntity{
     }
     @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
-    @JsonIgnoreProperties({"cardNumber","expiration","securityCode","comissionAgent","comissionVerifier","supervisor"})
+    @JsonIgnoreProperties({"cardNumber","expiration","securityCode","comissionAgent","comissionVerifier"})
     public Set<Sale> getSaleSet() {
         return saleSet;
     }
