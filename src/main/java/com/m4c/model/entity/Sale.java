@@ -66,9 +66,10 @@ public class Sale implements IDEntity{
 		this.campaign = campaign;
 	}
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
+	@JsonIgnoreProperties({"saleSet"})
     @JoinColumn(name="IDCLIENTE")
-    public Customer getCustomer() {
+	public Customer getCustomer() {
         return customer;
     }
 
@@ -199,14 +200,18 @@ public class Sale implements IDEntity{
 	public void setIdCallCenter(Long idCallCenter) {
 		this.idCallCenter = idCallCenter;
 	}
-	
+
 	@Column(name="NUMCERT")
-	public String getCertifiateNumber() {
+	public String getCertificateNumber() {
 		return certificateNumber;
 	}
-	public void setCertifiateNumber(String certifiateNumber) {
-		this.certificateNumber = certifiateNumber;
+
+	public void setCertificateNumber(String certificateNumber) {
+		this.certificateNumber = certificateNumber;
 	}
+
+
+
 	
 	@Column(name="COMISION_CONSULTOR")
 	public Double getComissionAgent() {

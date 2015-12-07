@@ -146,7 +146,7 @@ public class Customer implements IDEntity{
 
     @JoinColumns({
             @JoinColumn(name = "ESTADO",referencedColumnName ="code" ),
-            @JoinColumn(name = "PAIS",referencedColumnName ="PAIS_CODE" )
+            @JoinColumn(name = "PAIS",referencedColumnName ="PAIS_CODE")
     })
     public State getState() {
         return state;

@@ -1,5 +1,7 @@
 package com.m4c.model.entity.online;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
 import javax.persistence.*;
@@ -61,6 +63,7 @@ public class State implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="PAIS_CODE")
+	@JsonIgnore
 	public Country getCountry() {
 		return country;
 	}
