@@ -67,6 +67,26 @@ public class Campaign implements IDEntity{
 	private Date dateCreated=new Date();
     private Date dateUpdated;
     private String description;
+
+	@Column(name="SUBJECT")
+	public String getSubject() {
+		return Subject;
+	}
+
+	public void setSubject(String subject) {
+		Subject = subject;
+	}
+	@Column(name="BODY")
+	public String getBody() {
+		return Body;
+	}
+
+	public void setBody(String body) {
+		Body = body;
+	}
+
+	private String Subject;
+	private String Body;
     //@JsonIgnore
     //@JsonBackReference
     //@JsonInclude(JsonInclude.Include.NON_EMPTY)
