@@ -1,16 +1,10 @@
 package com.m4c.model.entity;
 
+import com.m4c.model.base.StringTools;
+
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
 *
@@ -76,6 +70,11 @@ public class Pax implements Serializable {
 	public String getFirstName() {
 		return firstName;
 	}
+	@Transient
+	public String getFirstNameNoEspecialCharacter() {
+		return StringTools.replaceEspecialCharacterByHyphen(firstName);
+	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
@@ -83,6 +82,10 @@ public class Pax implements Serializable {
 	@Column(name="APELLIDO")
 	public String getLastName() {
 		return lastName;
+	}
+	@Transient
+	public String getLastNameNoEspecialCharacter() {
+		return StringTools.replaceEspecialCharacterByHyphen(lastName);
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
