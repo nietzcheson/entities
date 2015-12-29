@@ -3,6 +3,7 @@ package com.m4c.model.entity;
 import com.m4c.model.base.StringTools;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -119,6 +120,13 @@ public class Pax implements Serializable {
 
     @Column(name = "FECHA_NACIMIENTOPAX")
     public Date getBirthDate() {
+		if(birthDate==null && age!=null && age>0){
+			Calendar calendar= Calendar.getInstance();
+
+			calendar.add(Calendar.DAY_OF_YEAR,age*-1);
+			birthDate=calendar.getTime();
+
+		}
         return birthDate;
     }
 
