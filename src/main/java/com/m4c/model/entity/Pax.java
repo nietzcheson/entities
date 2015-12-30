@@ -120,11 +120,12 @@ public class Pax implements Serializable {
 
     @Column(name = "FECHA_NACIMIENTOPAX")
     public Date getBirthDate() {
+
 		if(birthDate==null && age!=null && age>0){
 			Calendar calendar= Calendar.getInstance();
 
-			calendar.add(Calendar.DAY_OF_YEAR,age*-1);
-			birthDate=calendar.getTime();
+			calendar.add(Calendar.YEAR,age*-1);
+			return calendar.getTime();
 
 		}
         return birthDate;
