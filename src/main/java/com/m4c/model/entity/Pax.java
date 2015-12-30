@@ -125,7 +125,7 @@ public class Pax implements Serializable {
 			Calendar calendar= Calendar.getInstance();
 
 			calendar.add(Calendar.YEAR,age*-1);
-			return calendar.getTime();
+			birthDate= calendar.getTime();
 
 		}
         return birthDate;
