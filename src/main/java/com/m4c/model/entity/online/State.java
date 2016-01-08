@@ -63,7 +63,7 @@ public class State implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="PAIS_CODE")
-	@JsonIgnore
+	/*@JsonIgnore*/
 	public Country getCountry() {
 		return country;
 	}
