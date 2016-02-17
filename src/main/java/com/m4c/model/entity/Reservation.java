@@ -34,6 +34,7 @@ public class Reservation implements IDEntity {
     private String booking;
     private String bookingsm;//BOOKINGSUMMERBAY
     private String cards;
+    private Long  numeroManifesto;
     private int visa;
     private int mc;
     private int amex;
@@ -258,7 +259,19 @@ public class Reservation implements IDEntity {
 		return hotelUnit;
 	}
 
-	public void setHotelUnit(String hotelUnit) {
+    @Column(name = "IDMANIFIESTO")
+    public Long getNumeroManifesto() {
+        return numeroManifesto;
+    }
+
+    public void setNumeroManifesto(Long numeroManifesto) {
+        this.numeroManifesto = numeroManifesto;
+    }
+
+
+
+
+    public void setHotelUnit(String hotelUnit) {
 		this.hotelUnit = hotelUnit;
 	}
 
