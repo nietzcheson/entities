@@ -37,6 +37,7 @@ public class Customer implements IDEntity{
     private String postalCode;
     private String userName;
     private String email;
+    private String email2;
     private String phone1;
     private String phone2;
     private String phone3;
@@ -189,6 +190,14 @@ public class Customer implements IDEntity{
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    @Column (name="EMAIL2")
+    public String getEmail2() {
+        return email2;
+    }
+
+    public void setEmail2(String email2) {
+        this.email2 = email2;
     }
 
     @Column (name="TELEFONO")

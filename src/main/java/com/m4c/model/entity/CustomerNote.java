@@ -2,25 +2,14 @@ package com.m4c.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.Date;
-
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="M4CCLIENTENOTAS")
 public class CustomerNote {
 
-@JsonIgnore
+	@JsonIgnore
 	private Customer customer;
 	private int number;
 	private CustomerNotePk pk;
@@ -30,8 +19,9 @@ public class CustomerNote {
 	private String specialReq;
 	private Date date;
 	private String user;
-	private Date contactDate;	
-		
+	private Date contactDate;
+	private Long note_noteId;
+
 	@EmbeddedId
     @AttributeOverrides( {
         @AttributeOverride(name="customerId", column=@Column(name="IDCLIENTE", unique=false, nullable=false, insertable=true, updatable=true) ),
@@ -123,9 +113,14 @@ public class CustomerNote {
 	public void setSpecialReq(String specialReq) {
 		this.specialReq = specialReq;
 	}
-	
-	
-	
-	
+
+	@Column(name="NOTA_IDNOTA")
+	public Long getNote_noteId() {
+		return note_noteId;
+	}
+
+	public void setNote_noteId(Long note_noteId) {
+		this.note_noteId = note_noteId;
+	}
 	
 }

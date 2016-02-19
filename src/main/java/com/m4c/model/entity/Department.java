@@ -12,10 +12,11 @@ import com.m4c.model.base.IDEntity;
 @Table(name="M4CDEPARTAMENTO")
 public class Department implements IDEntity {
 	private static final long serialVersionUID = 1L;
-	
+	public static final String TAG = Department.class.getSimpleName();
 	private Long id;
 	private String department;
 	private String clave;
+	private String contexto;
 	
 	@Id
 	@Column (name="IDDEPTO")
@@ -44,7 +45,15 @@ public class Department implements IDEntity {
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
-	
-	
+
+	@Column (name="CONTEXTO")
+	public String getContexto() {
+		return contexto;
+	}
+
+	public void setContexto(String contexto) {
+		this.contexto = contexto;
+	}
+
 
 }
