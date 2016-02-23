@@ -27,7 +27,8 @@ public class User implements Serializable{
 	private Date dateini;
 	private String name;
 	private String email;
-	
+	private String access;
+
 	@Id
 	@Column (name="IDUSER")
 	public String getId() {
@@ -37,8 +38,16 @@ public class User implements Serializable{
 	public void setId(String id) {
 		this.id=id;
 	}
-	
-	
+	@Column (name="ACCESO")
+	public String getAccess() {
+		return access;
+	}
+
+	public void setAccess(String access) {
+		this.access = access;
+	}
+
+
 	@Column (name="EXTENSION")
 	public String getExtension() {
 		return extension;
