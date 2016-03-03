@@ -19,7 +19,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "M4CALERTAS")
-@javax.persistence.SequenceGenerator(name="SEQ_GENALERT", sequenceName="IDALERTA")
+//@javax.persistence.SequenceGenerator(name="SEQ_GENALERT", sequenceName="IDALERTA")
 public class Alert implements IDEntity {
 
 	private static final long serialVersionUID = 1L;
@@ -42,7 +42,7 @@ public class Alert implements IDEntity {
 	private Long idContract;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_GENALERT")
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_GENALERT")
 	@Column(name="IDALERTA")
 	public Long getId() {
 		return id;

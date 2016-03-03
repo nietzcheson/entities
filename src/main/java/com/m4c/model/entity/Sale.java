@@ -45,7 +45,7 @@ public class Sale implements IDEntity{
 	private Date collectionDate;
 	private Long extras;
 	private String record;
-
+	private Double downpayment;
 	@Id
 	@Column(name="IDBOOKING")
 	public Long getId() {
@@ -276,10 +276,19 @@ public class Sale implements IDEntity{
     public void setRecord(String record) {
         this.record = record;
     }
+	@Column(name="ENGANCHE")
+	public Double getDownpayment() {
+		return downpayment;
+	}
 
-    public Sale(Campaign campaign,Customer customer,Long idBooking,String consultant,String verifier,String supervisor,Integer numberOfPayments,
-                String certificateNumber, String user, String status,
-                Date saleDate, Date insertDate,Integer regular,Long extra,String collectionAgent,Date collectionDate,String comments,String record) {
+	public void setDownpayment(Double downpayment) {
+		this.downpayment = downpayment;
+	}
+
+	public Sale(Campaign campaign, Customer customer, Long idBooking, String consultant, String verifier, String supervisor, Integer numberOfPayments,
+				String certificateNumber, String user, String status,
+				Date saleDate, Date insertDate, Integer regular, Long extra, String collectionAgent,
+				Date collectionDate, String comments, String record, Double downpayment, String observations) {
         this.id=idBooking;
         this.consultant = consultant;
         this.verifier = verifier;
@@ -299,6 +308,7 @@ public class Sale implements IDEntity{
         this.collectionDate=collectionDate;
         this.comments=comments;
         this.record=record;
+		this.downpayment=downpayment;
     }
 
     public Sale() {

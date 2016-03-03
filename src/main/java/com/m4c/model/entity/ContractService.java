@@ -35,7 +35,8 @@ public class ContractService implements Serializable {
 	private String confirmation;
 	private String location;
 	private Long folioDolphin;
-	private Integer rateExchange;
+	private Double rateExchange
+			;
 
 	 @EmbeddedId
 	    @AttributeOverrides( {
@@ -187,7 +188,9 @@ public class ContractService implements Serializable {
 		this.userComission = userComission;
 	}
 
-    public ContractService(Long idBooking, Long idContractService, SubService subService, String description, String user, String certificateNumber, Integer pax,Integer childs,Integer quantity, Double amount) {
+    public ContractService(Long idBooking, Long idContractService, SubService subService,
+						   String description, String user, String certificateNumber,
+						   Integer pax,Integer childs,Integer quantity, Double amount, Double rateExchange) {
         this.pk.setIdBooking( idBooking);
         this.idContractService = idContractService;
         this.pk.setIdService(idContractService);
@@ -199,6 +202,7 @@ public class ContractService implements Serializable {
         this.amount = amount;
         this.quantity=quantity;
         this.childs=childs;
+		this.rateExchange=rateExchange;
 
     }
 
@@ -239,11 +243,11 @@ public class ContractService implements Serializable {
 	}
 
 	@Column(name="TIPOCAMBIO")
-	public Integer getRateExchange() {
+	public Double getRateExchange() {
 		return rateExchange;
 	}
 
-	public void setRateExchange(Integer rateExchange) {
+	public void setRateExchange(Double rateExchange) {
 		this.rateExchange = rateExchange;
 	}
 }
