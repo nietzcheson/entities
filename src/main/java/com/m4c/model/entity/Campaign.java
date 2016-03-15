@@ -67,6 +67,7 @@ public class Campaign implements IDEntity{
 	private Date dateCreated=new Date();
     private Date dateUpdated;
     private String description;
+	private Integer active;
 
 	@Column(name="SUBJECT")
 	public String getSubject() {
@@ -396,5 +397,13 @@ public class Campaign implements IDEntity{
 
 	public void setBrokers(List<CertLogin> brokers) {
 		this.brokers = brokers;
+	}
+	@Column(name = "ACTIVO")
+	public Integer getActive() {
+		return active;
+	}
+
+	public void setActive(Integer active) {
+		this.active = active;
 	}
 }
