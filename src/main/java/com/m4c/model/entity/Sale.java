@@ -1,10 +1,15 @@
 package com.m4c.model.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.*;
 import com.m4c.model.base.IDEntity;
+import org.hibernate.annotations.*;
 
 /**
 *
@@ -14,6 +19,7 @@ import com.m4c.model.base.IDEntity;
 
 @Entity
 @Table(name="M4CVENTA")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Sale implements IDEntity{
 
 	private static final long serialVersionUID = 1L;
@@ -46,6 +52,11 @@ public class Sale implements IDEntity{
 	private Long extras;
 	private String record;
 	private Double downpayment;
+//	@JsonIgnore
+	@JsonManagedReference
+	private List<Reservation> reservations =  new ArrayList<Reservation>();
+	@JsonManagedReference
+	private List<Survey> survies =  new ArrayList<Survey>();
 	@Id
 	@Column(name="IDBOOKING")
 	public Long getId() {
@@ -283,6 +294,31 @@ public class Sale implements IDEntity{
 
 	public void setDownpayment(Double downpayment) {
 		this.downpayment = downpayment;
+	}
+
+//	@OneToMany
+//			(mappedBy = "booking",fetch = FetchType.EAGER)
+//	@Fetch(FetchMode.SUBSELECT)
+//	@JoinFormula(value="(SELECT res.IDBOOKING from M4CRESERVACION res where res.IDBOOKING=IDBOOKING)")
+//	@JoinColumnsOrFormulas({
+//			@JoinColumnOrFormula(formula =
+//			@JoinFormula(value = "(SELECT res.IDBOOKING from M4CRESERVACION res where res.IDBOOKING=IDBOOKING)",
+//					referencedColumnName = "IDBOOKING")) })
+//	public List<Reservation> getReservations() {
+//		return reservations;
+//	}
+//	public void setReservations(List<Reservation> reservations) {
+//		this.reservations = reservations;
+//	}
+
+	@OneToMany(mappedBy = "sale",fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
+	@JsonIgnoreProperties({"sale"})
+	public List<Survey> getSurvies() {
+		return survies;
+	}
+	public void setSurvies(List<Survey> survies) {
+		this.survies = survies;
 	}
 
 	public Sale(Campaign campaign, Customer customer, Long idBooking, String consultant, String verifier, String supervisor, Integer numberOfPayments,

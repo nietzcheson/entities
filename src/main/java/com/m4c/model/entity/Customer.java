@@ -22,6 +22,7 @@ import org.hibernate.annotations.*;
 
 @Entity
 @Table(name="M4CLIENTE")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Customer implements IDEntity{
     private static final long serialVersionUID = 1L;
     public static final String TAG = Customer.class.getSimpleName();
@@ -255,10 +256,7 @@ public class Customer implements IDEntity{
         this.updateDate = updateDate;
     }
 
-
-    //@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL, CascadeType.MERGE}, mappedBy = "customer")
     @OneToMany(cascade = {CascadeType.ALL, CascadeType.MERGE}, mappedBy = "customer",fetch = FetchType.LAZY)
-//	@JoinColumn(name = "IDCLIENTE")
     public List<CustomerNote> getNotes() {
         return notes;
     }
@@ -273,7 +271,6 @@ public class Customer implements IDEntity{
 
 
     @OneToMany(cascade = {CascadeType.ALL, CascadeType.MERGE}, mappedBy = "customer",fetch = FetchType.LAZY)
-//	@JoinColumn(name = "IDCLIENTE")
     public List<CustomerCard> getCards() {
         return cards;
     }
@@ -282,8 +279,8 @@ public class Customer implements IDEntity{
     }
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer",fetch = FetchType.LAZY)
-//     @JoinColumn(name = "IDCLIENTE")
+    @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     public List<Reservation> getReservations() {
         return reservations;
     }
