@@ -44,6 +44,7 @@ public class AppApi {
     public Integer active = 1;
     @JsonProperty("publicKey")
     public String publicKey;
+    public Boolean sendEmail;
 
     @Id
     @Column(name = "ID")
@@ -106,6 +107,14 @@ public class AppApi {
 
     public void setPublicKey(String publicKey) {
         this.publicKey = publicKey;
+    }
+    @Column(name = "SENDEMAIl")
+    public Boolean getSendEmail() {
+        return sendEmail;
+    }
+
+    public void setSendEmail(Boolean sendEmail) {
+        this.sendEmail = sendEmail;
     }
 
     /**

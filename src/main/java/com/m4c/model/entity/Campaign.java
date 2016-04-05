@@ -17,18 +17,18 @@ import java.util.Date;
 import java.util.List;
 
 /**
-* @author Elvira Aranda
-* @version 1.0
-*/
+ * @author Elvira Aranda
+ * @version 1.0
+ */
 @Entity
 @Table(name="M4CCATCAMPANA")
 @javax.persistence.SequenceGenerator(name="SEQ_CAMPANIA", sequenceName="SEQ_CAMPANIA",allocationSize=1)
 public class Campaign implements IDEntity{
 	private static final long serialVersionUID = 1L;
-    public static final String TAG = Campaign.class.getSimpleName();
+	public static final String TAG = Campaign.class.getSimpleName();
 	private Long id;
 	private String name;
-//	@JsonIgnore
+	//	@JsonIgnore
 //	private String destinies;
 	@JsonIgnore
 	private Integer type;
@@ -42,20 +42,20 @@ public class Campaign implements IDEntity{
 	private ResOnlineConfig config;
 	@JsonIgnore
 	private Boolean ai;
-//	@JsonIgnore
+	//	@JsonIgnore
 	private Program program;
-    private Segment segment;
-    private String merchant;
+	private Segment segment;
+	private String merchant;
 	@JsonIgnore
-    private Integer oneway;
+	private Integer oneway;
 	@JsonIgnore
-    private String clave;
+	private String clave;
 	@JsonIgnore
-    private Integer online;
-    private String codigo;
-    private Integer expira;
-    private ReservationGroup reservationGroup;
-    private Country country;
+	private Integer online;
+	private String codigo;
+	private Integer expira;
+	private ReservationGroup reservationGroup;
+	private Country country;
 	private List<FoliosCertificado> foliosCertificado;
 
 	private Integer typeCertificate; //  1- E-CERT   2- FISICOS
@@ -65,8 +65,9 @@ public class Campaign implements IDEntity{
 	private String  slug;
 	private Integer  status;
 	private Date dateCreated=new Date();
-    private Date dateUpdated;
-    private String description;
+	private Date dateUpdated;
+	private String description;
+	private Integer active;
 	private Integer active;
 
 	@Column(name="SUBJECT")
@@ -88,16 +89,16 @@ public class Campaign implements IDEntity{
 
 	private String Subject;
 	private String Body;
-    //@JsonIgnore
-    //@JsonBackReference
-    //@JsonInclude(JsonInclude.Include.NON_EMPTY)
+	//@JsonIgnore
+	//@JsonBackReference
+	//@JsonInclude(JsonInclude.Include.NON_EMPTY)
 
 
-    private CertCustomer certCustomer;
-//	@JsonIgnoreProperties({"certCustomer","campana"})
+	private CertCustomer certCustomer;
+	//	@JsonIgnoreProperties({"certCustomer","campana"})
 //	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="user")
 	//@JsonManagedReference
-    @JsonIgnore
+	@JsonIgnore
 	private List<CertLogin> brokers = new ArrayList<CertLogin>();
 	@Id
 	//@GeneratedValue(strategy = GenerationType.AUTO)
@@ -105,7 +106,7 @@ public class Campaign implements IDEntity{
 	@Column(name="IDCAMPANIA")
 	//@GeneratedValue( generator = "trigger" )
 	//@GenericGenerator( name="trigger", strategy="com.m4sg.crm4marketingsunset.util.TriggerAssignedIdentityGenerator" )
-    public Long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -115,12 +116,12 @@ public class Campaign implements IDEntity{
 	}
 
 	@Column(name="DESTINOS")
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	@Column(name="CAMPANIA")
 	public String getName() {
@@ -140,8 +141,8 @@ public class Campaign implements IDEntity{
 	}
 
 
-    @ManyToOne
-    @JoinColumn(name="IDCALLCENTER")
+	@ManyToOne
+	@JoinColumn(name="IDCALLCENTER")
 	public CallCenter getCallCenter() {
 		return callCenter;
 	}
@@ -184,18 +185,18 @@ public class Campaign implements IDEntity{
 
 
 	@ManyToOne
-    @JoinColumn(name = "PROGRAMA")
-    public Program getProgram() {
-        return program;
-    }
+	@JoinColumn(name = "PROGRAMA")
+	public Program getProgram() {
+		return program;
+	}
 
-    public void setProgram(Program program) {
-        this.program = program;
-    }
+	public void setProgram(Program program) {
+		this.program = program;
+	}
 
 
 	@ManyToOne
-    @JoinColumn(name = "SEGMENTO")
+	@JoinColumn(name = "SEGMENTO")
 	public Segment getSegment() {
 		return segment;
 	}
@@ -319,7 +320,7 @@ public class Campaign implements IDEntity{
 //    }
 
 
-    public Campaign(String name,String codigo,
+	public Campaign(String name,String codigo,
 					Integer type, CallCenter callCenter,
 					Segment segment, String merchant,ReservationGroup reservationGroup,
 					int expiration,Country country,int typeFolio,int typeCertificate,
@@ -338,56 +339,56 @@ public class Campaign implements IDEntity{
 		this.offer=offer;
 		this.description=description;
 	}
-@Column(name = "SLUG")
-    public String getSlug() {
-        return slug;
-    }
+	@Column(name = "SLUG")
+	public String getSlug() {
+		return slug;
+	}
 
-    public void setSlug(String slug) {
-        this.slug = slug;
-    }
-    @Column(name = "STATUS")
-    public Integer getStatus() {
-        return status;
-    }
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+	@Column(name = "STATUS")
+	public Integer getStatus() {
+		return status;
+	}
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
-    @Column(name = "date_created")
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ", timezone="UTC")
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-    @Column(name = "date_updated")
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ", timezone="UTC" )
-    public Date getDateUpdated() {
-        return dateUpdated;
-    }
+	@Column(name = "date_created")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ", timezone="UTC")
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+	@Column(name = "date_updated")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ", timezone="UTC" )
+	public Date getDateUpdated() {
+		return dateUpdated;
+	}
 
-    public void setDateUpdated(Date dateUpdated) {
-        this.dateUpdated = dateUpdated;
-    }
+	public void setDateUpdated(Date dateUpdated) {
+		this.dateUpdated = dateUpdated;
+	}
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
-    }
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
 
-    public Campaign(){
+	public Campaign(){
 
 	}
-    //@JsonManagedReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IDCLIENTE")
+	//@JsonManagedReference
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "IDCLIENTE")
 	@JsonIgnoreProperties({"campaigns","user"})
-    public CertCustomer getCertCustomer() {
-        return certCustomer;
-    }
+	public CertCustomer getCertCustomer() {
+		return certCustomer;
+	}
 
-    public void setCertCustomer(CertCustomer certCustomer) {
-        this.certCustomer = certCustomer;
-    }
+	public void setCertCustomer(CertCustomer certCustomer) {
+		this.certCustomer = certCustomer;
+	}
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "campaign")
 	@Fetch(value = FetchMode.SUBSELECT)
 	@LazyCollection(LazyCollectionOption.FALSE)

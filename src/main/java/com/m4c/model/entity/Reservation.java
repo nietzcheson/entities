@@ -3,8 +3,13 @@ package com.m4c.model.entity;
 import java.util.*;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.m4c.model.base.IDEntity;
 import com.m4c.model.base.BeanComparator;
+import org.hibernate.annotations.ColumnTransformer;
+import org.hibernate.annotations.Formula;
 
 /**
  * @author Elvira Aranda
@@ -14,6 +19,7 @@ import com.m4c.model.base.BeanComparator;
 @Entity
 @Table(name = "M4CRESERVACION")
 @javax.persistence.SequenceGenerator(name="SEQ_GEN", sequenceName="IDRESERVACION")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Reservation implements IDEntity {
     private static final long serialVersionUID = 1L;
     private Long id;
@@ -31,7 +37,7 @@ public class Reservation implements IDEntity {
     private String unit;
     private String hotelUnit;
     private String userName;
-    private String booking;
+    private Sale booking;
     private String bookingsm;//BOOKINGSUMMERBAY
     private String cards;
     private Long  numeroManifesto;
@@ -92,8 +98,10 @@ public class Reservation implements IDEntity {
         this.status = status;
     }
 
-    @ManyToOne()
-    @JoinColumn(name = "IDCLIENTE")
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"reservation"})
+    @JoinColumn(name="IDCLIENTE")
     public Customer getCustomer() {
         return customer;
     }
@@ -284,14 +292,17 @@ public class Reservation implements IDEntity {
 		this.userName = userName;
 	}
 
-	@Column(name = "IDBOOKING")
-	public String getBooking() {
-		return booking;
-	}
-
-	public void setBooking(String booking) {
-		this.booking = booking;
-	}
+//    @JsonBackReference
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JsonIgnoreProperties({"survies"})
+//    @JoinColumn(name="IDBOOKING")
+//	public Sale getBooking() {
+//		return booking;
+//	}
+//
+//	public void setBooking(Sale booking) {
+//		this.booking = booking;
+//	}
 	
 	@Column(name = "BOOKINGSM")
 	public String getBookingsm() {
