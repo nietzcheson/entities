@@ -3,8 +3,15 @@ package com.m4c.model.entity;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.m4c.model.base.IDEntity;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author Elvira Aranda
@@ -37,6 +44,8 @@ public class CallCenter implements IDEntity {
     private Segment segment;
     private Integer oneway;
     private String merchant;
+    @JsonIgnore
+    private List<Campaign> campaignSet;
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_GEN")
@@ -217,5 +226,14 @@ public class CallCenter implements IDEntity {
 	public void setMerchant(String merchant) {
 		this.merchant = merchant;
 	}
-	    
+    @OneToMany(mappedBy = "callCenter",fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
+    @JsonIgnoreProperties({"type","callCenter","invoice","hook","config", "ai", "program", "segment", "merchant", "reservationGroup", "foliosCertificado", "country", "offer", "description"})
+    public List<Campaign> getCampaignSet() {
+        return campaignSet;
+    }
+
+    public void setCampaignSet(List<Campaign> campaignSet) {
+        this.campaignSet = campaignSet;
+    }
 }

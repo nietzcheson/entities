@@ -47,9 +47,9 @@ public class Survey  implements IDEntity {
         this.checkOut = checkOut;
     }
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnoreProperties({"survies"})
+//    @JsonBackReference
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JsonIgnoreProperties({"survies","campaign","customer"})
     @JoinColumn(name="IDBOOKING")
     public Sale getSale() {
         return sale;

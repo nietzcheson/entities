@@ -189,7 +189,7 @@ public class ContractService implements Serializable {
 
     public ContractService(Long idBooking, Long idContractService, SubService subService,
 						   String description, String user, String certificateNumber,
-						   Integer pax,Integer childs,Integer quantity, Double amount) {
+						   Integer pax,Integer childs,Integer quantity, Double amount, Double rateExchange) {
         this.pk.setIdBooking( idBooking);
         this.idContractService = idContractService;
         this.pk.setIdService(idContractService);
@@ -201,6 +201,7 @@ public class ContractService implements Serializable {
         this.amount = amount;
         this.quantity=quantity;
         this.childs=childs;
+		this.rateExchange=this.rateExchange;
     }
 
     public ContractService(){

@@ -53,8 +53,8 @@ public class Sale implements IDEntity{
 	private String record;
 	private Double downpayment;
 //	@JsonIgnore
-	@JsonManagedReference
-	private List<Reservation> reservations =  new ArrayList<Reservation>();
+//	@JsonManagedReference
+//	private List<Reservation> reservations =  new ArrayList<Reservation>();
 	@JsonManagedReference
 	private List<Survey> survies =  new ArrayList<Survey>();
 	@Id
@@ -311,20 +311,20 @@ public class Sale implements IDEntity{
 //		this.reservations = reservations;
 //	}
 
-	@OneToMany(mappedBy = "sale",fetch = FetchType.EAGER)
-	@Fetch(FetchMode.SUBSELECT)
-	@JsonIgnoreProperties({"sale"})
-	public List<Survey> getSurvies() {
-		return survies;
-	}
-	public void setSurvies(List<Survey> survies) {
-		this.survies = survies;
-	}
+//	@OneToMany(mappedBy = "sale",fetch = FetchType.EAGER)
+//	@Fetch(FetchMode.SUBSELECT)
+//	@JsonIgnoreProperties({})
+//	public List<Survey> getSurvies() {
+//		return survies;
+//	}
+//	public void setSurvies(List<Survey> survies) {
+//		this.survies = survies;
+//	}
 
 	public Sale(Campaign campaign, Customer customer, Long idBooking, String consultant, String verifier, String supervisor, Integer numberOfPayments,
 				String certificateNumber, String user, String status,
 				Date saleDate, Date insertDate, Integer regular, Long extra, String collectionAgent,
-				Date collectionDate, String comments, String record) {
+				Date collectionDate, String comments, String record, Double downpayment) {
         this.id=idBooking;
         this.consultant = consultant;
         this.verifier = verifier;
@@ -344,6 +344,7 @@ public class Sale implements IDEntity{
         this.collectionDate=collectionDate;
         this.comments=comments;
         this.record=record;
+		this.downpayment=downpayment;
     }
 
     public Sale() {

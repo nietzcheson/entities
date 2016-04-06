@@ -68,7 +68,6 @@ public class Campaign implements IDEntity{
 	private Date dateUpdated;
 	private String description;
 	private Integer active;
-	private Integer active;
 
 	@Column(name="SUBJECT")
 	public String getSubject() {
