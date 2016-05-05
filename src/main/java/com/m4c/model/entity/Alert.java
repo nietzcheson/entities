@@ -2,23 +2,19 @@ package com.m4c.model.entity;
 
 
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.m4c.model.base.IDEntity;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "M4CALERTAS")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+
 //@javax.persistence.SequenceGenerator(name="SEQ_GENALERT", sequenceName="IDALERTA")
 public class Alert implements IDEntity {
 
@@ -28,7 +24,9 @@ public class Alert implements IDEntity {
 	private String group;
 	private Date date;
 	private String type;
+ 	@JsonIgnore
 	private Customer customer;
+	@JsonIgnore
 	private Reservation reservation;
 	private Date changedDate;
 	private Date closedDate;
@@ -84,9 +82,7 @@ public class Alert implements IDEntity {
 		this.type = type;
 	}
 
-	@JsonIgnore
-	@ManyToOne()
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IDCLIENTE")
 	public Customer getCustomer() {
 		return customer;
