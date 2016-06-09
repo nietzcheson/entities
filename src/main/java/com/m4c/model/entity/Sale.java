@@ -324,7 +324,7 @@ public class Sale implements IDEntity{
 	public Sale(Campaign campaign, Customer customer, Long idBooking, String consultant, String verifier, String supervisor, Integer numberOfPayments,
 				String certificateNumber, String user, String status,
 				Date saleDate, Date insertDate, Integer regular, Long extra, String collectionAgent,
-				Date collectionDate, String comments, String record, Double downpayment) {
+				Date collectionDate, String comments, String record) {
         this.id=idBooking;
         this.consultant = consultant;
         this.verifier = verifier;
@@ -344,7 +344,6 @@ public class Sale implements IDEntity{
         this.collectionDate=collectionDate;
         this.comments=comments;
         this.record=record;
-		this.downpayment=downpayment;
     }
 
     public Sale() {
