@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Juan on 1/12/2015.
  */
 @Entity
-@Table(name = "m4ccattransportation")
+@Table(name = "m4c_cat_transportacion")
 @NamedQueries({
         @NamedQuery(
                 name = "com.m4c.model.entity.Transportation.findAll",
@@ -19,7 +19,7 @@ public class Transportation {
     @Column(name = "id", nullable = false)
     private long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "DESCRIPCION_EN", nullable = false)
     private String name;
 
     public long getId() {
